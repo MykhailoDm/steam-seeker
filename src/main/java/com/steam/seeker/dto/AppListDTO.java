@@ -7,30 +7,58 @@ import java.util.List;
 
 public class AppListDTO {
 
-    private List<AppEntryDTO> appEntryDTOS;
+    private AppsDTO appsDTO;
 
     @JsonCreator
     public AppListDTO() {
     }
 
     @JsonCreator
-    public AppListDTO(@JsonProperty("applist")
-                      List<AppEntryDTO> appEntryDTOS) {
-        this.appEntryDTOS = appEntryDTOS;
+    public AppListDTO(@JsonProperty("applist") AppsDTO appsDTO) {
+        this.appsDTO = appsDTO;
     }
 
-    public List<AppEntryDTO> getAppEntryDTOS() {
-        return appEntryDTOS;
+    public AppsDTO getAppsDTO() {
+        return appsDTO;
     }
 
-    public void setAppEntryDTOS(List<AppEntryDTO> appEntryDTOS) {
-        this.appEntryDTOS = appEntryDTOS;
+    public void setAppsDTO(AppsDTO appsDTO) {
+        this.appsDTO = appsDTO;
     }
 
     @Override
     public String toString() {
         return "AppListDTO{" +
-                "appEntryDTOS=" + appEntryDTOS +
+                "appsDTO=" + appsDTO +
                 '}';
+    }
+
+    public static class AppsDTO {
+        private List<AppEntryDTO> appEntryDTOS;
+
+        @JsonCreator
+        public AppsDTO() {
+        }
+
+        @JsonCreator
+        public AppsDTO(@JsonProperty("apps")
+                                  List<AppEntryDTO> appEntryDTOS) {
+            this.appEntryDTOS = appEntryDTOS;
+        }
+
+        public List<AppEntryDTO> getAppEntryDTOS() {
+            return appEntryDTOS;
+        }
+
+        public void setAppEntryDTOS(List<AppEntryDTO> appEntryDTOS) {
+            this.appEntryDTOS = appEntryDTOS;
+        }
+
+        @Override
+        public String toString() {
+            return "AppsDTO{" +
+                    "appEntryDTOS=" + appEntryDTOS +
+                    '}';
+        }
     }
 }
