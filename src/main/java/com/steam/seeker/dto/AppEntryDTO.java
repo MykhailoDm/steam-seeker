@@ -1,5 +1,6 @@
 package com.steam.seeker.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AppEntryDTO {
@@ -7,9 +8,11 @@ public class AppEntryDTO {
     private Long appId;
     private String name;
 
+    @JsonCreator
     public AppEntryDTO() {
     }
 
+    @JsonCreator
     public AppEntryDTO(@JsonProperty("appid")
                        Long appId,
                        @JsonProperty("name")
