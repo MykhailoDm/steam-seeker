@@ -5,5 +5,5 @@ import reactor.core.publisher.Flux;
 
 public interface SteamRequestsService {
 
-    Flux<AppEntryDTO> get();
+    Flux<AppEntryDTO> getAppEntryInfo();
 }
