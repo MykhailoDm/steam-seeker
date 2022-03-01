@@ -3,6 +3,7 @@ package com.steam.seeker.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
@@ -16,7 +17,15 @@ public class SteamConfig {
 
     @Bean(name = "steamApiWebClient")
     public WebClient steamApiWebClient() {
-        return WebClient.create(steamApiBaseUrl);
+        final int size = 16 * 1024 * 1024;
+        final ExchangeStrategies strategies = ExchangeStrategies.builder()
+                .codecs(codecs -> codecs.defaultCodecs().maxInMemorySize(size))
+                .build();
+
+        return WebClient.builder()
+                .baseUrl(steamApiBaseUrl)
+                .exchangeStrategies(strategies)
+                .build();
     }
 
     @Bean(name = "steamStoreWebClient")
